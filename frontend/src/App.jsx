@@ -4,6 +4,9 @@ import { Route, Routes } from 'react-router-dom'
 
 import { lazy , Suspense } from 'react'
 import Homepage from './pages/Homepage'
+import Navbar from './components/Navbar'
+import { ToastContainer } from 'react-toastify'
+
 const Challenges = lazy(()=> import('./pages/Challenges'))
 const Challengedetails = lazy(()=> import('./pages/Challengedetails'))
 const Dashboard = lazy(()=>import('./pages/Dashboard'))
@@ -12,10 +15,12 @@ const Profile = lazy(()=> import('./pages/Profile'))
 const Leaderboard = lazy(()=>import('./pages/Leaderboard'))
 
 
+
 const App = () => {
   return (
     <div className=''>
-  
+      <ToastContainer />
+      <Navbar />
 
       <Suspense 
       fallback={<div className="min-h-screen flex items-center justify-center">
