@@ -2,11 +2,15 @@ import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets.js'
 import { NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
+import { DataContext } from '../context/DataContext.jsx'
 
 
 const Navbar = () => {
     
     const [open, setOpen] = useState(false)
+    const {token,setToken} = useContext(DataContext)
+
+    const finalToken = localStorage.getItem("token") || token
    
 
   return (
@@ -32,13 +36,13 @@ const Navbar = () => {
             </div>
 
             <div className='flex gap-10 items-center' >
-                {/* {
+                {
                     !finalToken && (
                         <div className=' text-xl'>
                             <NavLink to='/login' className='hover:text-cyan-500 text-slate-200 transition-all duration-300 font-medium'>Login</NavLink>
                         </div>
                     )
-                } */}
+                } 
 
                 <NavLink to='/profile' className='hidden sm:block gap-2'>
                     <img src={assets.profile_icon} className="w-10 hover:scale-110 transition-all duration-300" />
