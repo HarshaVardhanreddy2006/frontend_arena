@@ -64,7 +64,12 @@ const userRegister = async (req,res) => {
             password:hashPassword,
         })
 
+        console.log(user);
+        
+
         const token = generateToken(user._id)
+        console.log("done");
+        
 
         res.json({success:true,token,name})
 

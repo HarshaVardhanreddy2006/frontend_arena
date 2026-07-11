@@ -3,7 +3,7 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 
 import { lazy , Suspense } from 'react'
-import Homepage from './pages/Homepage'
+import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify'
 
@@ -29,7 +29,7 @@ const App = () => {
       >
       
         <Routes>
-          <Route path='/' element={<Homepage/>}/>
+          <Route path='/' element={<Home/>}/>
           <Route path='/challenges' element={<Challenges/>} />
           <Route path='/challengedetails/:id' element={<Challengedetails/>} />
           <Route path='/dashboard' element={<Dashboard />} />
