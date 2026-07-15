@@ -1,29 +1,32 @@
-import "dotenv/config";
-import express from "express";
-import cors from "cors";
-import connectDB from "./config/mongoDB.js";
-import userRouter from "./routes/userRoutes.js";
 
-const app = express();
+import 'dotenv/config'
 
-app.use(cors());
-app.use(express.json());
+import express from 'express'
+import cors from 'cors'
+import connectDB from './config/mongoDB.js'
+import userRouter from './routes/userRoutes.js'
+import connectCloudinary from './config/cloudinary.js'
+import challengeRouter from './routes/challengeRoutes.js'
 
-const startServer = async () => {
-  try {
-    await connectDB();
 
-    app.use("/api/user", userRouter);
 
-    const PORT = process.env.PORT || 5000;
+const app = express()
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
-  } catch (err) {
-    console.error("Failed to start server");
-    console.error(err);
-  }
-};
+app.use(cors())
 
-startServer();
+app.use(express.json())
+
+//config
+connectDB()
+connectCloudinary()
+
+app.use("/api/user",userRouter)
+app.use('/api/challenge',challengeRouter)
+
+
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log('Server running on port 5000');
+});

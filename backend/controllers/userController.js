@@ -84,6 +84,11 @@ const adminLogin = async (req,res) => {
     try {
         
         const {email,password} = req.body;
+        console.log("reach");
+
+        console.log(process.env.ADMIN_EMAIL);
+        
+    
 
         if (!email || !password) {
             return res.json({success:false,message:"required both admin email and password"});
@@ -96,6 +101,8 @@ const adminLogin = async (req,res) => {
         if (password!==process.env.ADMIN_PASSWORD) {
             return res.json({success:false,message:"wrong password"})
         }
+        console.log("reach2");
+        
 
         const token = jwt.sign({email},process.env.JWT_SECRET,{expiresIn:'2d'})
 
