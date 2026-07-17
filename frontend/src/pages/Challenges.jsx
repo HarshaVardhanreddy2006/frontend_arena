@@ -162,7 +162,8 @@ const Challenges = () => {
                     <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-cyan-500 px-3 py-2 rounded-lg text-white w-35">Start Challenge</button>
                   )
                 } */}
-                
+                <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-cyan-500 px-3 py-2 rounded-lg text-white w-35">Start Challenge</button>
+
                 {/* <button onClick={() => toggleBookmark(item._id)} className="w-8">
                   <img src={bookmark.some(bookmarkItem => bookmarkItem._id === item._id) ? assets.bookmark2 : assets.bookmark} alt=""/>
                 </button> */}

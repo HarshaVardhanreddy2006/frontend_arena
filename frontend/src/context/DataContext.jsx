@@ -4,7 +4,22 @@ import { useEffect } from 'react';
 import {toast} from 'react-toastify'
 
 export const DataContext=createContext();
+ const challengeList = async () => {
+        try {
+            
+            const response = await axios.get(backendUrl+'/api/challenge/list')
 
+            if (response.data.success) {
+                setChallenge(response.data.challenges)
+            }
+            else{
+                console.log(response.data.message);
+            }
+
+        } catch (error) {
+            toast.error("something went wrong ")
+        }
+    }
 
 const DataContextProvider = (props) => {
 
