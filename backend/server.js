@@ -7,6 +7,7 @@ import connectDB from './config/mongoDB.js'
 import userRouter from './routes/userRoutes.js'
 import connectCloudinary from './config/cloudinary.js'
 import challengeRouter from './routes/challengeRoutes.js'
+import submissionRouter from './routes/submissionRoutes.js'
 
 
 
@@ -22,6 +23,7 @@ connectCloudinary()
 
 app.use("/api/user",userRouter)
 app.use('/api/challenge',challengeRouter)
+app.use('/api/submission',submissionRouter)
 
 
 
