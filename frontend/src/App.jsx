@@ -6,6 +6,7 @@ import { lazy , Suspense } from 'react'
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
 import { ToastContainer } from 'react-toastify'
+import Footer from './components/Footer'
 
 const Challenges = lazy(()=> import('./pages/Challenges'))
 const Challengedetails = lazy(()=> import('./pages/Challengedetails'))
@@ -42,7 +43,7 @@ const App = () => {
       
 
 
-      
+      <Footer/>
         
     </div>
   )
