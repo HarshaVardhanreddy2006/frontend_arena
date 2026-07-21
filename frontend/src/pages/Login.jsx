@@ -33,7 +33,6 @@ const Login = () => {
                 if (response.data.success) {
                     
                     setToken(response.data.token)
-                    setUserName(response.data.name)
                     localStorage.setItem("token",response.data.token)
                     toast.success("account created succesfully..")
                     navigate('/')
@@ -43,14 +42,14 @@ const Login = () => {
                 console.log("before");
                 
                 const response = await axios.post(backendUrl+'/api/user/login',{email,password})
+                console.log(response.data);
+                
                 
                 if (response.data.success) {
                     setToken(response.data.token)
-                    setUserName(response.data.name)
                     localStorage.setItem("token",response.data.token)
                     toast.success("login successfull..")
                     console.log(response.data.token);
-                    
                     navigate('/')
                 }
             }

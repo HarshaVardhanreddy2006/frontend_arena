@@ -7,8 +7,8 @@ import { assets } from '../assets/assets';
 const Challenges = () => {
 
   const navigate = useNavigate();
-  const {backendUrl,token,challenge,setChallenge,loading} = useContext(DataContext)
-  
+  const {backendUrl,token,challenge,setChallenge,submissions,loading} = useContext(DataContext)  
+
 
   const [search, setSearch] = useState("")
   const [category,setCategory]=useState("All")
@@ -21,16 +21,16 @@ const Challenges = () => {
   const filteredChallenges = search.trim() !=="" ? challenge.filter((item=> item.title.toLowerCase().includes(search.toLowerCase()) 
   || item.challengeNumber.toString().includes(search) )) : difficultyChallenges 
 
-  console.log(filteredChallenges);
   
 
-  // const getStatus = (id) => {
+  const getStatus = (id) => {
         
-  //   const submission = submissions.find((item)=>item.challengeId._id.toString() === id.toString())    
+    const submission = submissions.find((item)=>item.challengeId._id.toString() === id.toString())    
     
-  //   return submission?.status
+    
+    return submission?.status
 
-  // }
+   }
 
   return (
     <div className='max-w-7xl mx-auto px-4 py-10'>
@@ -153,7 +153,7 @@ const Challenges = () => {
                 <p className='text-slate-100 font-medium'>{item.title}</p>
                 <p className='text-slate-400'>{item.category}</p>
                 <p className={ item.difficulty === "Easy" ? "text-emerald-500" : item.difficulty === "Medium" ? "text-yellow-500" : "text-red-500"}>{item.difficulty}</p>
-                {/* {
+                {
                   getStatus(item._id) === "completed" ? (
                     <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-emerald-500 px-4 py-2 rounded-lg text-white w-35">Completed</button>
                   ) : getStatus(item._id) === "in-progress" ? (
@@ -161,12 +161,11 @@ const Challenges = () => {
                   ) : (
                     <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-cyan-500 px-3 py-2 rounded-lg text-white w-35">Start Challenge</button>
                   )
-                } */}
-                <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-cyan-500 px-3 py-2 rounded-lg text-white w-35">Start Challenge</button>
+                } 
 
                 {/* <button onClick={() => toggleBookmark(item._id)} className="w-8">
                   <img src={bookmark.some(bookmarkItem => bookmarkItem._id === item._id) ? assets.bookmark2 : assets.bookmark} alt=""/>
-                </button> */}
+                </button>  */}
 
               </div>
 
@@ -183,7 +182,7 @@ const Challenges = () => {
                   </button> */}
                 </div>
 
-                {/* {
+                {
                   getStatus(item._id) === "completed" ? (
                     <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-emerald-500 mt-4 px-2 py-2 rounded-lg text-white w-full">Completed</button>
                   ) : getStatus(item._id) === "in-progress" ? (
@@ -191,7 +190,7 @@ const Challenges = () => {
                   ) : (
                     <button onClick={()=>navigate(`/challengedetails/${item._id}`)} className="bg-cyan-500 mt-4 px-2 py-2 rounded-lg text-white w-full ">Start Challenge</button>
                   )
-                } */}
+                } 
 
               </div>
               <div className='w-full border border-cyan-400/10 mt-2'></div>
